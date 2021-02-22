@@ -1,0 +1,38 @@
+<%- include("header") -%>
+<body>
+  <div class="box" id="heading">
+    <!-- A dynamic header that updates with the name of the list's title -->
+    <h1><%= listTitle %></h1>
+  </div>
+
+  <div class="box">
+
+<%# A forEach method that itterates through the array of items, and queries the correct item to delete from the database using the form %>
+    <% newItem.forEach(function(item){ %>
+      <form action="/delete", method="POST">
+      <div class = "item">
+        <!-- The use of an "onChange" function allows access to the state of the checkbox, and the assignment of a "submit" function upon its change -->
+        <input type="checkbox" name="checkbox" value = "<%=item._id%>" onChange="this.form.submit()" />
+        <p><%= item.name %></p>
+        </div>
+        <!-- This hidden input allows the assignment of the listTitle to a value within the form, for access from the server file -->
+        <input type="hidden" name="listName" value="<%= listTitle %>"> </input>
+        </form>
+    <% }) %>
+    <!-- A form used as a post method to the root route that is used for entering new items in to a list -->
+    <form action="/" method="POST" class="item">
+      <input name="listItem" type="text" placeholder="Enter a new list item" autocomplete="off" />
+      <button name="list" type="submit" value = "<%= listTitle %>">+</button>
+    </form>
+
+  </div>
+<!-- A form used for initialising a new empty list, titled by the user -->
+  <div class="listBox" >
+  <form action = "/:listName" method = "POST" class="item">
+    <input name="newListTitle" type="text" placeholder="Enter a title for your new list" autocomplete="off" />
+    <button name = "newList" type="submit" class="listButton" >+</button>
+    </form>
+  </div>
+
+
+<%- include("footer") -%>
