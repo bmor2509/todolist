@@ -208,7 +208,7 @@ if (port == null || port == "") {
 app.listen(port);
 
 
-//The app is set to listen on port 3000 for local hosting
-app.listen(port, function() {
-  console.log("Server has started successfully!");
-})
+// //The app is set to listen on port 3000 for local hosting
+// app.listen(port, function() {
+//   console.log("Server has started successfully!");
+// })
