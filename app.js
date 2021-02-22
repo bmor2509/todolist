@@ -8,7 +8,7 @@ const _ = require("lodash"); //For use with string handling/standardising in URL
 
 //Initialising express
 const app = express();
-const port = 3000;
+
 
 //Setting the view engine to use EJS
 app.set("view engine", "ejs");
@@ -201,8 +201,14 @@ app.post("/:listName", function(req,res){
 
 });
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
+
 
 //The app is set to listen on port 3000 for local hosting
 app.listen(port, function() {
-  console.log("Server live on port 3000!");
+  console.log("Server has started successfully!");
 })
