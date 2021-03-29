@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 // This line is used for incorporating static files outside the scope of the views folder and the root such as a stylesheet in this case
 app.use(express.static("public"));
 
-//Standard connection for mongoose, on regular port and the last part being the name of the database you want to connect to or create
+//Standard connection for mongoose, on regular port and the last parameter being the name of the database you want to connect to or create
 mongoose.connect("mongodb+srv://admin-ben:test123@cluster0.0n6zn.mongodb.net/todolistDB", {
   //Also included are some parameters from the console to rectify deprication issues within mongoose
   useNewUrlParser: true,
@@ -60,7 +60,7 @@ const listSchema = {
 //When you create a schema, you must create a mongoose model from it
 const List = mongoose.model("List", listSchema);
 
-//Get method for the home(root) route, which used Item.find() to search the contents of the items db, and reports the found entries with the "foundItems" parameter
+//Get method for the home(root) route, which used Item.find() to search the contents of the items db, and returns the found entries with the "foundItems" parameter
 app.get("/", function(req, res) {
   Item.find({}, function(err, foundItems) {
     if (foundItems.length === 0) {
@@ -208,7 +208,3 @@ if (port == null || port == "") {
 app.listen(port);
 
 
-// //The app is set to listen on port 3000 for local hosting
-// app.listen(port, function() {
-//   console.log("Server has started successfully!");
-// })
