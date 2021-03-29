@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 //Standard connection for mongoose, on regular port and the last parameter being the name of the database you want to connect to or create
-mongoose.connect("mongodb+srv://admin-ben:test123@cluster0.0n6zn.mongodb.net/todolistDB", {
+mongoose.connect("", {
   //Also included are some parameters from the console to rectify deprication issues within mongoose
   useNewUrlParser: true,
   useUnifiedTopology: true,
